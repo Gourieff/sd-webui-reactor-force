@@ -1,13 +1,15 @@
 import copy
 import os
 from dataclasses import dataclass
-from typing import List, Union
+from typing import List, Union, Tuple
+from functools import lru_cache
 
 import cv2
 import numpy as np
 from PIL import Image
 
 import insightface
+# import onnxruntime as ort
 
 from modules.face_restoration import FaceRestoration
 from modules.upscaler import UpscalerData
@@ -20,7 +22,7 @@ import warnings
 np.warnings = warnings
 np.warnings.filterwarnings('ignore')
 
-providers = ["CPUExecutionProvider"]
+providers = ["CUDAExecutionProvider"]
 
 
 @dataclass
@@ -64,19 +66,23 @@ CURRENT_FS_MODEL_PATH = None
 ANALYSIS_MODEL = None
 
 
-def getAnalysisModel():
+@lru_cache(maxsize=3)
+def getAnalysisModel(det_size: Tuple[int, int] = (640, 640)):
     global ANALYSIS_MODEL
     if ANALYSIS_MODEL is None:
         ANALYSIS_MODEL = insightface.app.FaceAnalysis(
             name="buffalo_l", providers=providers, root=os.path.join(models_path, "insightface") # note: allowed_modules=['detection', 'genderage']
         )
+    ANALYSIS_MODEL.prepare(ctx_id=0, det_size=det_size)
     return ANALYSIS_MODEL
 
 
+@lru_cache(maxsize=1)
 def getFaceSwapModel(model_path: str):
     global FS_MODEL
     global CURRENT_FS_MODEL_PATH
     if CURRENT_FS_MODEL_PATH is None or CURRENT_FS_MODEL_PATH != model_path:
+        # ort.InferenceSession(model_path, providers=providers)
         CURRENT_FS_MODEL_PATH = model_path
         FS_MODEL = insightface.model_zoo.get_model(model_path, providers=providers)
 
@@ -195,8 +201,8 @@ def reget_face_single(img_data, det_size, face_index, gender_source, gender_targ
 
 
 def get_face_single(img_data: np.ndarray, face_index=0, det_size=(640, 640), gender_source=0, gender_target=0):
-    face_analyser = copy.deepcopy(getAnalysisModel())
-    face_analyser.prepare(ctx_id=0, det_size=det_size)
+    face_analyser = getAnalysisModel(det_size)
+    # face_analyser.prepare(ctx_id=0, det_size=det_size)
     face = face_analyser.get(img_data)
 
     buffalo_path = os.path.join(models_path, "insightface/models/buffalo_l.zip")

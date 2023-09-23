@@ -50,7 +50,7 @@ if not os.path.exists(models_dir):
 if not os.path.exists(model_path):
     download(model_url, model_path)
 
-print("Checking ReActor requirements...", end=' ')
+print("Checking -=ReActor Force=- requirements...", end=' ')
 with open(req_file) as file:
     install_count = 0
     strict = True

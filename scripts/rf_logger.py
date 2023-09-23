@@ -26,7 +26,7 @@ class ColoredFormatter(logging.Formatter):
 
 
 # Create a new logger
-logger = logging.getLogger("ReActor")
+logger = logging.getLogger("ReActor Force")
 logger.propagate = False
 
 # Custom Level name
