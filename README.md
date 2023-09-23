@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="https://github.com/Gourieff/Assets/raw/main/sd-webui-reactor/ReActor_logo_red.png?raw=true" alt="logo" width="180px"/>
+  <img src="https://github.com/Gourieff/Assets/raw/main/sd-webui-reactor/ReActor_logo_red_CUDA.png?raw=true" alt="logo" width="180px"/>
     
   ![Version](https://img.shields.io/badge/version-0.4.2_beta2-green?style=for-the-badge&labelColor=darkgreen)<hr>
   [![Commit activity](https://img.shields.io/github/commit-activity/t/Gourieff/sd-webui-reactor-force/main?cacheSeconds=0)](https://github.com/Gourieff/sd-webui-reactor-force/commits/main)
