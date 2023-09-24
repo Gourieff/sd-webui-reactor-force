@@ -15,7 +15,7 @@
           </sup>
         </a>
       </td>
-      <td width="144px">
+      <td width="148px">
         <b>
           for NVIDIA GPU
         </b>
