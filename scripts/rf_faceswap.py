@@ -90,9 +90,13 @@ class FaceSwapScript(scripts.Script):
                             value=shared.face_restorers[0].name(),
                             type="value",
                         )
-                        face_restorer_visibility = gr.Slider(
-                            0, 1, 1, step=0.1, label="Restore Face Visibility"
-                        )
+                        with gr.Column():
+                            face_restorer_visibility = gr.Slider(
+                                0, 1, 1, step=0.1, label="Restore Face Visibility"
+                            )
+                            codeformer_weight = gr.Slider(
+                                0, 1, 0.5, step=0.1, label="CodeFormer Weight", info="0 = maximum effect, 1 = minimum effect"
+                            )
                     gr.Markdown("<br>")
                     swap_in_source = gr.Checkbox(
                         False,
@@ -162,6 +166,7 @@ class FaceSwapScript(scripts.Script):
             gender_source,
             gender_target,
             save_original,
+            codeformer_weight,
         ]
 
 
@@ -188,6 +193,7 @@ class FaceSwapScript(scripts.Script):
             face_restorer=self.face_restorer,
             upscale_visibility=self.upscaler_visibility,
             restorer_visibility=self.face_restorer_visibility,
+            codeformer_weight=self.codeformer_weight,
         )
 
     def process(
@@ -210,6 +216,7 @@ class FaceSwapScript(scripts.Script):
         gender_source,
         gender_target,
         save_original,
+        codeformer_weight,
     ):
         self.enable = enable
         if self.enable:
@@ -232,6 +239,7 @@ class FaceSwapScript(scripts.Script):
             self.gender_source = gender_source
             self.gender_target = gender_target
             self.save_original = save_original
+            self.codeformer_weight = codeformer_weight
             if self.gender_source is None or self.gender_source == "No":
                 self.gender_source = 0
             if self.gender_target is None or self.gender_target == "No":

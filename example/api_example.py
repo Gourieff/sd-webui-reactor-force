@@ -39,6 +39,7 @@ args=[
     0, #14 Gender Detection (Source) (0 - No, 1 - Female Only, 2 - Male Only)
     0, #15 Gender Detection (Target) (0 - No, 1 - Female Only, 2 - Male Only)
     False, #16 Save the original image(s) made before swapping
+    0.8, #17 CodeFormer Weight (0 = maximum effect, 1 = minimum effect), 0.5 - by default
 ]
 
 # The args for ReActor can be found by 
@@ -58,7 +59,7 @@ payload = {
     "width": 512,
     "height": 768,
     "restore_faces": False,
-    "alwayson_scripts": {"reactor":{"args":args}}
+    "alwayson_scripts": {"reactor force":{"args":args}}
 }
 
 try:

@@ -1,7 +1,7 @@
 '''
 Thanks SpenserCai for the original version of the roop api script
 -----------------------------------
---- ReActor External API v1.0.0 ---
+--- ReActor External API v1.0.1 ---
 -----------------------------------
 '''
 import os, glob
@@ -64,6 +64,7 @@ def reactor_api(_: gr.Blocks, app: FastAPI):
         upscale_visibility: float = Body(1,title="Upscaler visibility (if scale = 1)"),
         face_restorer: str = Body("None",title="Restore Face: 0 - None; 1 - CodeFormer; 2 - GFPGA"),
         restorer_visibility: float = Body(1,title="Restore visibility value"),
+        codeformer_weight: float = Body(0.5,title="CodeFormer Weight"),
         restore_first: int = Body(1,title="Restore face -> Then upscale, 1 - True, 0 - False"),
         model: str = Body("inswapper_128.onnx",title="Model"),
         gender_source: int = Body(0,title="Gender Detection (Source) (0 - No, 1 - Female Only, 2 - Male Only)"),
@@ -78,7 +79,7 @@ def reactor_api(_: gr.Blocks, app: FastAPI):
         gender_s = gender_source
         gender_t = gender_target
         restore_first_bool = True if restore_first == 1 else False
-        up_options = EnhancementOptions(do_restore_first=restore_first_bool, scale=scale, upscaler=get_upscaler(upscaler), upscale_visibility=upscale_visibility,face_restorer=get_face_restorer(face_restorer),restorer_visibility=restorer_visibility)
+        up_options = EnhancementOptions(do_restore_first=restore_first_bool, scale=scale, upscaler=get_upscaler(upscaler), upscale_visibility=upscale_visibility,face_restorer=get_face_restorer(face_restorer),restorer_visibility=restorer_visibility,codeformer_weight=codeformer_weight)
         use_model = get_full_model(model)
         if use_model is None:
             Exception("Model not found")

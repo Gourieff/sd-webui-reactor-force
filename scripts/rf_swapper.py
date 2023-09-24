@@ -12,6 +12,7 @@ import insightface
 # import onnxruntime as ort
 
 from modules.face_restoration import FaceRestoration
+from modules import codeformer_model
 from modules.upscaler import UpscalerData
 from modules.shared import state
 from modules.paths_internal import models_path
@@ -33,6 +34,7 @@ class EnhancementOptions:
     upscale_visibility: float = 0.5
     face_restorer: FaceRestoration = None
     restorer_visibility: float = 0.5
+    codeformer_weight: float = 0.5
 
 
 MESSAGED_STOPPED = False
@@ -99,7 +101,13 @@ def restore_face(image: Image, enhancement_options: EnhancementOptions):
         original_image = result_image.copy()
         logger.info("Restoring the face with %s", enhancement_options.face_restorer.name())
         numpy_image = np.array(result_image)
-        numpy_image = enhancement_options.face_restorer.restore(numpy_image)
+        if enhancement_options.face_restorer.name() == "CodeFormer":
+            numpy_image = codeformer_model.codeformer.restore(
+                numpy_image, w=enhancement_options.codeformer_weight
+            )
+        else:
+            numpy_image = enhancement_options.face_restorer.restore(numpy_image)
+        # numpy_image = enhancement_options.face_restorer.restore(numpy_image)
         restored_image = Image.fromarray(numpy_image)
         result_image = Image.blend(
             original_image, restored_image, enhancement_options.restorer_visibility

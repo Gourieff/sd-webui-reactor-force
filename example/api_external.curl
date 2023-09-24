@@ -12,6 +12,7 @@ curl -X POST \
     "upscale_visibility": 1,
     "face_restorer": "CodeFormer",
     "restorer_visibility": 1,
+    "codeformer_weight": 0.5,
     "restore_first": 1,
     "model": "inswapper_128.onnx",
     "gender_source": 0,
