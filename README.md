@@ -2,7 +2,33 @@
 
   <img src="https://github.com/Gourieff/Assets/raw/main/sd-webui-reactor/ReActor_logo_red_CUDA.png?raw=true" alt="logo" width="180px"/>
     
-  ![Version](https://img.shields.io/badge/version-0.4.2_beta2-green?style=for-the-badge&labelColor=darkgreen)<hr>
+  ![Version](https://img.shields.io/badge/version-0.4.2_beta2-green?style=for-the-badge&labelColor=darkgreen)
+  
+  <table>
+    <tr>
+      <td width="50%">
+        <a href="https://github.com/Gourieff/sd-webui-reactor" target="_blank">
+          <b>
+            for Any GPU
+          </b>
+          <br>
+          <sup>
+            NVIDIA / AMD / Intel
+          </sup>
+        </a>
+      </td>
+      <td width="144px">
+        for NVIDIA GPU
+        <br>
+        <sup>
+          8Gb VRAM or more
+        </sup>
+      </td>
+    </tr>
+  </table>
+  
+  <hr>
+  
   [![Commit activity](https://img.shields.io/github/commit-activity/t/Gourieff/sd-webui-reactor-force/main?cacheSeconds=0)](https://github.com/Gourieff/sd-webui-reactor-force/commits/main)
   ![Last commit](https://img.shields.io/github/last-commit/Gourieff/sd-webui-reactor-force/main?cacheSeconds=0)
   [![Opened issues](https://img.shields.io/github/issues/Gourieff/sd-webui-reactor-force?color=red)](https://github.com/Gourieff/sd-webui-reactor-force/issues?cacheSeconds=0)
@@ -12,7 +38,6 @@
   English | [Русский](/README_RU.md)
 
 # ReActor Force for Stable Diffusion
-**--- *version for NVIDIA GPU* ---**
 
 ### The Fast and Simple FaceSwap Extension with a lot of improvements and without NSFW filter (uncensored, use it on your own [responsibility](#disclaimer))
 
@@ -104,10 +129,9 @@
 - **Upscaling** of a resulting image
 - Ability to set the **Postprocessing order**
 - **100% compatibility** with different **SD WebUIs**: Automatic1111, SD.Next, Cagliostro Colab UI
-- **Fast performance** even with CPU, ReActor for SD WebUI is absolutely not picky about how powerful your GPU is
+- **Super fast performance** with NVIDIA GPU (for other platforms please use [another version](https://github.com/Gourieff/sd-webui-reactor) of ReActor)
 - **[API](/API.md) support**: both SD WebUI built-in and external (via POST/GET requests)
 - **ComfyUI [support](https://github.com/Gourieff/comfyui-reactor-node)**
-- **Mac M1/M2 [support](https://github.com/Gourieff/sd-webui-reactor/issues/42)**
 - Console **log level control**
 - **NSFW filter free** (this extension is aimed at highly developed intellectual people, not at perverts; our society must be oriented on its way towards the highest standards, not the lowest - this is the essence of development and evolution; so, my position is - that mature-minded people are clever enough to understand for themselves what is good and what is bad and take full responsibility for personal actions; for others - no "filters" will help until they do understand how Universe works)
 
@@ -115,7 +139,7 @@
 
 > Using this software you are agree with [disclaimer](#disclaimer)
 
-1. Under "ReActor" drop-down menu, import an image containing a face;
+1. Under "ReActor Force" drop-down menu, import an image containing a face;
 2. Turn on the "Enable" checkbox;
 3. That's it, now the generated result will have the face you selected.
 
@@ -175,7 +199,7 @@ Please, check the path where "inswapper_128.onnx" model is stored. It must be in
 
 ### **II. Any problems with installing Insightface or other dependencies**
 
-(for Mac M1/M2 users) If you get errors when trying to install Insightface - please read https://github.com/Gourieff/sd-webui-reactor/issues/42
+(for Mac M1/M2 users) If you get errors when trying to install Insightface - please read https://github.com/Gourieff/sd-webui-reactor/issues/42 and use [another version](https://github.com/Gourieff/sd-webui-reactor) of ReActor
 
 (for Windows Users) If you have VS C++ Build Tools or MS VS 2022 installed but still have a problem, then try the next step:
 1. Close (stop) your SD WebUI Server and start it again
@@ -190,7 +214,7 @@ Please, check the path where "inswapper_128.onnx" model is stored. It must be in
 7. Then one-by-one:
    - `pip install insightface==0.7.3`
    - `pip install onnx`
-   - `pip install onnxruntime-gpu`
+   - `pip install onnxruntime-gpu==1.15.1`
    - `pip install opencv-python`
    - `pip install tqdm`
 8. Type `deactivate`, you can close your Terminal or Console and start your SD WebUI, ReActor should start OK - if not, welcome to the Issues section.
@@ -201,10 +225,6 @@ First of all - you need to disable any other Roop-based extensions:
 - Go to 'Extensions -> Installed' tab and uncheck any Roop-based extensions except this one
   <img src="https://github.com/Gourieff/Assets/raw/main/sd-webui-reactor/roop-off.png?raw=true" alt="uncompatible-with-other-roop"/>
 - Click 'Apply and restart UI'
-
-Alternative solutions: 
-- https://github.com/Gourieff/sd-webui-reactor/issues/3#issuecomment-1615919243
-- https://github.com/Gourieff/sd-webui-reactor/issues/39#issuecomment-1666559134 (can be actual, if you use Vladmandic SD.Next)
 
 ### **IV. "AttributeError: 'FaceSwapScript' object has no attribute 'enable'"**
 
@@ -226,9 +246,9 @@ and put it to the `stable-diffusion-webui\models\insightface` replacing existing
 5. Then:
 - `python -m pip install -U pip`
 - `pip uninstall protobuf`
-- `pip install protobuf==3.20.3`
+- `pip install protobuf>=3.20.3`
 
-If this method doesn't help - there is some other extension that has a higher version of protobuf dependence and SD WebUI installs it on a startup requirements check
+If this method doesn't help - there is some other extension that has a wrong version of protobuf dependence and SD WebUI installs it on a startup requirements check
 
 <a name="insightfacebuild">
 
