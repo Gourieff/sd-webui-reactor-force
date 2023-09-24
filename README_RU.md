@@ -8,9 +8,7 @@
     <tr>
       <td width="50%">
         <a href="https://github.com/Gourieff/sd-webui-reactor" target="_blank">
-          <b>
-            для любых GPU
-          </b>
+          для любых GPU
           <br>
           <sup>
             NVIDIA / AMD / Intel
@@ -18,7 +16,9 @@
         </a>
       </td>
       <td width="150px">
-        для GPU NVIDIA
+        <b>
+          для GPU NVIDIA
+        </b>
         <br>
         <sup>
           8Гб VRAM или более

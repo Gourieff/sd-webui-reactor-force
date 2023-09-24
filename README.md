@@ -8,9 +8,7 @@
     <tr>
       <td width="50%">
         <a href="https://github.com/Gourieff/sd-webui-reactor" target="_blank">
-          <b>
-            for Any GPU
-          </b>
+          for Any GPU
           <br>
           <sup>
             NVIDIA / AMD / Intel
@@ -18,7 +16,9 @@
         </a>
       </td>
       <td width="144px">
-        for NVIDIA GPU
+        <b>
+          for NVIDIA GPU
+        </b>
         <br>
         <sup>
           8Gb VRAM or more
