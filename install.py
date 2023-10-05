@@ -5,7 +5,13 @@ from tqdm import tqdm
 import urllib.request
 from packaging import version as pv
 
-from modules.paths_internal import models_path
+try:
+    from modules.paths_internal import models_path
+except:
+    try:
+        from modules.paths import models_path
+    except:
+        model_path = os.path.abspath("models")
 
 req_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "requirements.txt")
 

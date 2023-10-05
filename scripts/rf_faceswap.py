@@ -13,8 +13,14 @@ from modules.processing import (
     StableDiffusionProcessingImg2Img,
 )
 from modules.face_restoration import FaceRestoration
-from modules.paths_internal import models_path
 from modules.images import save_image
+try:
+    from modules.paths_internal import models_path
+except:
+    try:
+        from modules.paths import models_path
+    except:
+        model_path = os.path.abspath("models")
 
 from scripts.rf_logger import logger
 from scripts.rf_swapper import EnhancementOptions, swap_face, check_process_halt, reset_messaged
