@@ -1,5 +1,5 @@
 app_title = "ReActor Force"
-version_flag = "v0.4.2-b3"
+version_flag = "v0.4.3-b1"
 
 from scripts.rf_logger import logger, get_Run, set_Run
 
