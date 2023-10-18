@@ -4,6 +4,7 @@ import sys
 
 from modules import shared
 from scripts.rf_globals import IS_RUN
+from scripts.rf_helpers import addLoggingLevel
 
 
 class ColoredFormatter(logging.Formatter):
@@ -29,8 +30,8 @@ class ColoredFormatter(logging.Formatter):
 logger = logging.getLogger("ReActor Force")
 logger.propagate = False
 
-# Custom Level name
-logging.addLevelName(logging.INFO, "STATUS")
+# Add Custom Level
+addLoggingLevel("STATUS", logging.INFO + 5)
 
 # Add handler if we don't have one.
 if not logger.handlers:
@@ -41,8 +42,8 @@ if not logger.handlers:
     logger.addHandler(handler)
 
 # Configure logger
-loglevel_string = getattr(shared.cmd_opts, "reactor_loglevel", "INFO")
-loglevel = getattr(logging, loglevel_string.upper(), "info")
+loglevel_string = getattr(shared.cmd_opts, "reactor_loglevel", "STATUS")
+loglevel = getattr(logging, loglevel_string.upper(), "status")
 logger.setLevel(loglevel)
 
 def set_Run(value):

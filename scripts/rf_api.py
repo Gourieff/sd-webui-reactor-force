@@ -89,7 +89,7 @@ def reactor_api(_: gr.Blocks, app: FastAPI):
                 result_file_path = default_file_path()
             try:
                 result[0].save(result_file_path, format='PNG')
-                logger.info("Result has been saved to: %s", result_file_path)
+                logger.status("Result has been saved to: %s", result_file_path)
             except Exception as e:
                 logger.error("Error while saving result: %s",e)
         return {"image": api.encode_pil_to_base64(result[0])}

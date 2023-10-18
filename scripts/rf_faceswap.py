@@ -266,11 +266,11 @@ class FaceSwapScript(scripts.Script):
             if self.source is not None:
                 apply_logging_patch(console_logging_level)
                 if isinstance(p, StableDiffusionProcessingImg2Img) and swap_in_source:
-                    logger.info("Working: source face index %s, target face index %s", self.source_faces_index, self.faces_index)
+                    logger.status("Working: source face index %s, target face index %s", self.source_faces_index, self.faces_index)
 
                     for i in range(len(p.init_images)):
                         if len(p.init_images) > 1:
-                            logger.info("Swap in %s", i)
+                            logger.status("Swap in %s", i)
                         result, output, swapped = swap_face(
                             self.source,
                             p.init_images[i],
@@ -311,14 +311,14 @@ class FaceSwapScript(scripts.Script):
                 # result_info: List = processed.infotexts
 
                 if self.swap_in_generated:
-                    logger.info("Working: source face index %s, target face index %s", self.source_faces_index, self.faces_index)
+                    logger.status("Working: source face index %s, target face index %s", self.source_faces_index, self.faces_index)
                     if self.source is not None:
                         for i,(img,info) in enumerate(zip(orig_images, orig_infotexts)):
                             if check_process_halt():
                                 postprocess_run = False
                                 break
                             if len(orig_images) > 1:
-                                logger.info("Swap in %s", i)
+                                logger.status("Swap in %s", i)
                             result, output, swapped = swap_face(
                                 self.source,
                                 img,
@@ -371,7 +371,7 @@ class FaceSwapScript(scripts.Script):
                 return
             
             if self.source is not None:
-                logger.info("Working: source face index %s, target face index %s", self.source_faces_index, self.faces_index)
+                logger.status("Working: source face index %s, target face index %s", self.source_faces_index, self.faces_index)
                 image: Image.Image = script_pp.image
                 result, output, swapped = swap_face(
                     self.source,
