@@ -1,5 +1,7 @@
 <div align="center">
 
+  ## DEPRECATED! Please you the main repo: [sd-webui-reactor](https://github.com/Gourieff/sd-webui-reactor) (CUDA Support from 0.5.0)
+
   <img src="https://github.com/Gourieff/Assets/raw/main/sd-webui-reactor/ReActor_logo_red_CUDA.png?raw=true" alt="logo" width="180px"/>
     
   ![Version](https://img.shields.io/badge/version-0.4.3_beta2-green?style=for-the-badge&labelColor=darkgreen)
