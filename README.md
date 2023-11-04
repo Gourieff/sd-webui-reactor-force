@@ -1,6 +1,6 @@
 <div align="center">
 
-  ## DEPRECATED! Please you the main repo: [sd-webui-reactor](https://github.com/Gourieff/sd-webui-reactor) (CUDA Support from 0.5.0)
+  ## DEPRECATED!<br>Please you the main repo: [sd-webui-reactor](https://github.com/Gourieff/sd-webui-reactor) (CUDA Support since 0.5.0)
 
   <img src="https://github.com/Gourieff/Assets/raw/main/sd-webui-reactor/ReActor_logo_red_CUDA.png?raw=true" alt="logo" width="180px"/>
     
