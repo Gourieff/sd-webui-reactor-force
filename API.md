@@ -40,7 +40,7 @@ curl -X POST \
     "target_image": "data:image/png;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABCAAD/7g...",
     "source_faces_index": [0],
     "face_index": [0],
-    "upscaler": "4x_Struzan_300000",
+    "upscaler": "4x_NMKD-Siax_200k",
     "scale": 2,
     "upscale_visibility": 1,
     "face_restorer": "CodeFormer",
@@ -50,13 +50,26 @@ curl -X POST \
     "gender_source": 0,
     "gender_target": 0,
     "save_to_file": 0,
-    "result_file_path": ""
+    "result_file_path": "",
+    "device": "CUDA",
+    "mask_face": 1,
+    "select_source": 1,
+    "face_model": "elena.safetensors",
+    "source_folder": "C:/faces",
+    "random_image": 1,
+    "upscale_force": 1
 	}'
 ```
 
 * Set `"upscaler"` to `"None"` and `"scale"` to `1` if you don't need to upscale;
 * Set `"save_to_file"` to `1` if you need to save result to a file;
-* `"result_file_path"` is set to the `"outputs/api"` folder by default (please, create the folder beforehand to avoid any errors) with a timestamped filename; (output_YYYY-MM-DD_hh-mm-ss), you can set any specific path, e.g. `"C:/stable-diffusion-webui/outputs/api/output.png"`.
+* `"result_file_path"` is set to the `"outputs/api"` folder by default (please, create the folder beforehand to avoid any errors) with a timestamped filename; (output_YYYY-MM-DD_hh-mm-ss), you can set any specific path, e.g. `"C:/stable-diffusion-webui/outputs/api/output.png"`;
+* Set `"mask_face"` to `1` if you want ReActor to mask the face or to `0` if want ReActor to create a bbox around the face;
+* Set `"select_source"` to: 0 - Image, 1 - Face Model, 2 - Source Folder;
+* Set `"face_model"` to the face model file you want to choose if you set `"select_source": 1`;
+* Set `"source_folder"` to the path with source images (with faces you need as the results) if you set `"select_source": 2`;
+* Set `"random_image"` to `1` if want ReActor to choose a random image from the path of `"source_folder"`;
+* Set `"upscale_force"` to `1` if you want ReActor to upscale the image even if no face found.
 
 You can find full usage examples with all the available parameters in the "example" folder: [cURL](./example/api_external.curl), [JSON](./example/api_external.json).
 
@@ -69,3 +82,20 @@ As a result you recieve a "base64" image:
 A list of available models can be seen by GET:
 * http://127.0.0.1:7860/reactor/models
 * http://127.0.0.1:7860/reactor/upscalers
+* http://127.0.0.1:7860/reactor/facemodels
+
+### FaceModel Buid API
+
+Send POST to http://127.0.0.1:7860/reactor/facemodels with body:
+
+```
+{
+    "source_images": ["data:image/png;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABQAAD/7g...","data:image/png;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABQAAD/7g...","data:image/png;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABQAAD/7g..."],
+    "name": "my_super_model",
+    "compute_method": 0
+}
+```
+
+where:<br>
+"source_images" is a list of base64 encoded images,<br>
+"compute_method" is: 0 - Mean, 1- Median, 2 - Mode

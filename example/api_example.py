@@ -17,7 +17,7 @@ finally:
     print(im)
 
 img_bytes = io.BytesIO()
-im.save(img_bytes, format='PNG') 
+im.save(img_bytes, format='PNG')
 img_base64 = base64.b64encode(img_bytes.getvalue()).decode('utf-8')
 
 # ReActor arguments:
@@ -31,7 +31,7 @@ args=[
     1, #5 Restore visibility value
     True, #7 Restore face -> Upscale
     '4x_NMKD-Superscale-SP_178000_G', #8 Upscaler (type 'None' if doesn't need), see full list here: http://127.0.0.1:7860/sdapi/v1/script-info -> reactor -> sec.8
-    2, #9 Upscaler scale value
+    1.5, #9 Upscaler scale value
     1, #10 Upscaler visibility (if scale = 1)
     False, #11 Swap in source image
     True, #12 Swap in generated image
@@ -40,6 +40,18 @@ args=[
     0, #15 Gender Detection (Target) (0 - No, 1 - Female Only, 2 - Male Only)
     False, #16 Save the original image(s) made before swapping
     0.8, #17 CodeFormer Weight (0 = maximum effect, 1 = minimum effect), 0.5 - by default
+    False, #18 Source Image Hash Check, True - by default
+    False, #19 Target Image Hash Check, False - by default
+    "CUDA", #20 CPU or CUDA (if you have it), CPU - by default
+    True, #21 Face Mask Correction
+    1, #22 Select Source, 0 - Image, 1 - Face Model, 2 - Source Folder
+    "elena.safetensors", #23 Filename of the face model (from "models/reactor/faces"), e.g. elena.safetensors, don't forger to set #22 to 1
+    "C:\PATH_TO_FACES_IMAGES", #24 The path to the folder containing source faces images, don't forger to set #22 to 2
+    None, #25 skip it for API
+    True, #26 Randomly select an image from the path
+    True, #27 Force Upscale even if no face found
+    0.6, #28 Face Detection Threshold
+    2, #29 Maximum number of faces to detect (0 is unlimited)
 ]
 
 # The args for ReActor can be found by 
@@ -59,7 +71,7 @@ payload = {
     "width": 512,
     "height": 768,
     "restore_faces": False,
-    "alwayson_scripts": {"reactor force":{"args":args}}
+    "alwayson_scripts": {"reactor":{"args":args}}
 }
 
 try:

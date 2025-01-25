@@ -4,7 +4,7 @@
     "source_faces_index": [0],
     "face_index": [2],
     "upscaler": "None",
-    "scale": 1,
+    "scale": 1.5,
     "upscale_visibility": 1,
     "face_restorer": "CodeFormer",
     "restorer_visibility": 1,
@@ -14,5 +14,12 @@
     "gender_source": 0,
     "gender_target": 0,
     "save_to_file": 1,
-    "result_file_path": ""
+    "result_file_path": "",
+    "device": "CUDA",
+    "mask_face": 1,
+    "select_source": 1,
+    "face_model": "elena.safetensors",
+    "source_folder": "C:/faces",
+    "random_image": 1,
+    "upscale_force": 1
 }
