@@ -14,11 +14,11 @@
   
   <hr>
   
-  [![Commit activity](https://img.shields.io/github/commit-activity/t/Gourieff/sd-webui-reactor-force/main?cacheSeconds=0)](https://github.com/Gourieff/sd-webui-reactor-force/commits/main)
-  ![Last commit](https://img.shields.io/github/last-commit/Gourieff/sd-webui-reactor-force/main?cacheSeconds=0)
-  [![Opened issues](https://img.shields.io/github/issues/Gourieff/sd-webui-reactor-force?color=red)](https://github.com/Gourieff/sd-webui-reactor-force/issues?cacheSeconds=0)
-  [![Closed issues](https://img.shields.io/github/issues-closed/Gourieff/sd-webui-reactor-force?color=green&cacheSeconds=0)](https://github.com/Gourieff/sd-webui-reactor-force/issues?q=is%3Aissue+is%3Aclosed)
-  ![License](https://img.shields.io/github/license/Gourieff/sd-webui-reactor-force)
+  [![Commit activity](https://img.shields.io/github/commit-activity/t/Gourieff/sd-webui-reactor-sfw/main?cacheSeconds=0)](https://github.com/Gourieff/sd-webui-reactor-sfw/commits/main)
+  ![Last commit](https://img.shields.io/github/last-commit/Gourieff/sd-webui-reactor-sfw/main?cacheSeconds=0)
+  [![Opened issues](https://img.shields.io/github/issues/Gourieff/sd-webui-reactor-sfw?color=red)](https://github.com/Gourieff/sd-webui-reactor-sfw/issues?cacheSeconds=0)
+  [![Closed issues](https://img.shields.io/github/issues-closed/Gourieff/sd-webui-reactor-sfw?color=green&cacheSeconds=0)](https://github.com/Gourieff/sd-webui-reactor-sfw/issues?q=is%3Aissue+is%3Aclosed)
+  ![License](https://img.shields.io/github/license/Gourieff/sd-webui-reactor-sfw)
 
   [English](/README.md) | Русский
 
@@ -126,7 +126,7 @@
   - ИЛИ только **VS C++ Build Tools** (если вам не нужен весь пакет Visual Studio), выберите "Desktop Development with C++" в разделе "Workloads -> Desktop & Mobile":
   https://visualstudio.microsoft.com/visual-cpp-build-tools/
   - ИЛИ если же вы не хотите устанавливать что-либо из вышеуказанного - выполните [следующие шаги (пункт VIII)](#insightfacebuild)
-2. Внутри SD Web-UI перейдите во вкладку "Extensions", загрузите список доступных расширений (вкладка "Available") и введите "ReActor" в строке поиска или же вставьте ссылку `https://github.com/Gourieff/sd-webui-reactor-force` в "Install from URL" - и нажмите "Install"
+2. Внутри SD Web-UI перейдите во вкладку "Extensions", загрузите список доступных расширений (вкладка "Available") и введите "ReActor" в строке поиска или же вставьте ссылку `https://github.com/Gourieff/sd-webui-reactor-sfw` в "Install from URL" - и нажмите "Install"
 3. Пожалуйста, подождите несколько минут, пока процесс установки полностью не завершится (наберитесь терпения, не прерывайте процесс)
 4. Проверьте последнее сообщение в консоли SD-WebUI:
 * Если вы видите "--- PLEASE, RESTART the Server! ---" - остановите Сервер (CTRL+C или CMD+C) и запустите его заново - ИЛИ же перейдите во вкладку "Installed", нажмите "Apply and restart UI" 
@@ -139,16 +139,16 @@
 2. (Для пользователей Windows) Смотрите [Шаг 1](#a1111) для Automatic1111 (если же вы следовали [данным шагам (пункт VIII)](#insightfacebuild) вместо этого - переходите к Шагу 5)
 3. Перейдите в (Windows)`automatic\venv\Scripts` или (MacOS/Linux)`automatic/venv/bin`, запустите Терминал или Консоль (cmd) для данной папки и выполните `activate`
 4. Выполните `pip install insightface==0.7.3`
-5. Запустите SD.Next, перейдите во вкладку "Extensions", вставьте эту ссылку `https://github.com/Gourieff/sd-webui-reactor-force` в "Install from URL" и нажмите "Install"
+5. Запустите SD.Next, перейдите во вкладку "Extensions", вставьте эту ссылку `https://github.com/Gourieff/sd-webui-reactor-sfw` в "Install from URL" и нажмите "Install"
 6. Пожалуйста, подождите несколько минут, пока процесс установки полностью не завершится (наберитесь терпения, не прерывайте процесс)
 7. Проверьте последнее сообщение в консоли SD.Next:
 * Если вы видите "--- PLEASE, RESTART the Server! ---" - остановите Сервер (CTRL+C или CMD+C) или просто закройте консоль
-8. Перейдите в директорию `automatic\extensions\sd-webui-reactor-force` - если вы видите там папку `models\insightface` с файлом `inswapper_128.onnx` внутри, переместите его в папку `automatic\models\insightface`
+8. Перейдите в директорию `automatic\extensions\sd-webui-reactor-sfw` - если вы видите там папку `models\insightface` с файлом `inswapper_128.onnx` внутри, переместите его в папку `automatic\models\insightface`
 9. Готово, можете запустить SD.Next WebUI!
 
 <a name="colab">Если вы используете [Cagliostro Colab UI](https://github.com/Linaqruf/sd-notebook-collection):
 
-1. В активном WebUI перейдите во вкладку "Extensions", загрузите список доступных расширений (вкладка "Available") и введите "ReActor" в строке поиска или же вставьте ссылку `https://github.com/Gourieff/sd-webui-reactor-force` в "Install from URL" - и нажмите "Install"
+1. В активном WebUI перейдите во вкладку "Extensions", загрузите список доступных расширений (вкладка "Available") и введите "ReActor" в строке поиска или же вставьте ссылку `https://github.com/Gourieff/sd-webui-reactor-sfw` в "Install from URL" - и нажмите "Install"
 2. Пожалуйста, подождите некоторое время, пока процесс установки полностью не завершится (наберитесь терпения, не прерывайте процесс)
 3. Когда вы увидите сообщение "--- PLEASE, RESTART the Server! ---" (в секции "Start UI" вашего ноутбука "Start Cagliostro Colab UI") - перейдите во вкладку "Installed" и нажмите "Apply and restart UI"
 4. Готово!
@@ -328,13 +328,13 @@ Inpainting также работает, но замена лица происх�
 
 Выполните следующее:
 
-Внутри папки `extensions\sd-webui-reactor-force` запустите Терминал или Консоль (cmd) и затем:
+Внутри папки `extensions\sd-webui-reactor-sfw` запустите Терминал или Консоль (cmd) и затем:
 - `git reset f48bdf1 --hard`
 - `git pull`
 
 ИЛИ:
 
-Полностью удалите папку `sd-webui-reactor-force` внутри директории `extensions`, запустите Терминал или Консоль (cmd) и выполните `git clone https://github.com/Gourieff/sd-webui-reactor-force`
+Полностью удалите папку `sd-webui-reactor-sfw` внутри директории `extensions`, запустите Терминал или Консоль (cmd) и выполните `git clone https://github.com/Gourieff/sd-webui-reactor-sfw`
 
 ### **X. Ошибки установки в StabilityMatrix**
 
